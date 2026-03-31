@@ -1,0 +1,151 @@
+.page {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 22px;
+}
+
+.hero {
+  padding: 28px;
+  border: 1px solid var(--panel-border);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255, 252, 247, 0.92), rgba(252, 245, 233, 0.88));
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.96;
+}
+
+.hero p {
+  margin: 12px 0 0;
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.card {
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.form input {
+  min-height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(87, 101, 113, 0.22);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 12px;
+  color: var(--text);
+}
+
+.form input:focus {
+  outline: 2px solid rgba(204, 141, 31, 0.18);
+  border-color: rgba(204, 141, 31, 0.48);
+}
+
+.button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d79b31, #bc7b17);
+  color: #fffaf1;
+  padding: 0 18px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.hint,
+.empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+.error {
+  margin: 0;
+  color: #a33d2a;
+}
+
+.success {
+  margin: 0;
+  color: #2f6b47;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.entry {
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(87, 101, 113, 0.16);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.entryHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.entryHeader strong {
+  font-size: 1rem;
+}
+
+.entryHeader span,
+.entryMeta {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.entryMeta {
+  margin-top: 6px;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
