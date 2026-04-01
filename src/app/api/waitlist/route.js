@@ -34,6 +34,7 @@ export async function POST(request) {
 
     const entry = await prisma.waitlistEntry.create({
       data: {
+        id: crypto.randomUUID(),
         name,
         email,
         company: company || null,

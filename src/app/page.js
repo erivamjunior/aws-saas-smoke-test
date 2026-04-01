@@ -13,6 +13,20 @@ function formatDate(value) {
   return new Date(value).toLocaleString("pt-BR");
 }
 
+async function readJsonSafely(response) {
+  const raw = await response.text();
+
+  if (!raw) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(raw);
+  } catch {
+    throw new Error(`Resposta inválida do servidor (${response.status}).`);
+  }
+}
+
 export default function HomePage() {
   const [entries, setEntries] = useState([]);
   const [form, setForm] = useState(INITIAL_FORM);
@@ -22,7 +36,7 @@ export default function HomePage() {
 
   async function loadEntries() {
     const response = await fetch("/api/waitlist", { cache: "no-store" });
-    const data = await response.json();
+    const data = await readJsonSafely(response);
 
     if (!response.ok) {
       throw new Error(data.error || "Erro ao carregar registros.");
@@ -48,7 +62,7 @@ export default function HomePage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await response.json();
+      const data = await readJsonSafely(response);
 
       if (!response.ok) {
         throw new Error(data.error || "Erro ao salvar registro.");
