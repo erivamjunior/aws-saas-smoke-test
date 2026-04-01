@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const prisma = getPrisma();
+
   try {
     const entries = await prisma.waitlistEntry.findMany({
       orderBy: { createdAt: "desc" },
@@ -15,6 +20,8 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  const prisma = getPrisma();
+
   try {
     const body = await request.json();
     const name = String(body?.name || "").trim();
